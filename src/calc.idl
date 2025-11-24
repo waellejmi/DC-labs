@@ -4,6 +4,6 @@ module eniso {
     };
 
     interface Calc {
-        long div(in long a, in long b) raises (DivByZeroException);
+       long long div(in long long a, in  long long b) raises (DivByZeroException);
     };
 };
