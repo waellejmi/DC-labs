@@ -1,0 +1,10 @@
+Machine pour traiter l'information
+Langage de programmation
+Connexion de machines
+Communication TCP/UDP
+Annuaire de services
+Consommateur de service
+Fournisseur de service
+Contrat de méthodes
+Erreur à l'exécution
+Invocation distante
