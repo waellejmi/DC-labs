@@ -1,0 +1,60 @@
+module BomberManCorba {
+    
+    // Structure to represent the maze (2D array will be sent as sequence)
+    typedef sequence<long> MazeRow;
+    typedef sequence<MazeRow> Maze;
+    
+    // Structure for StartGameInfo
+    struct StartGameInfo {
+        long playerId;
+        Maze maze;
+    };
+    
+    // Structure for a Sprite
+    struct SpriteData {
+        string type;
+        double x;
+        double y;
+        long id;
+    };
+    
+    typedef sequence<SpriteData> SpriteList;
+    
+    // Structure for a Player
+    struct PlayerData {
+        long id;
+        string name;
+        long score;
+        boolean alive;
+    };
+    
+    typedef sequence<PlayerData> PlayerList;
+    
+    // Structure for DynamicGameModel
+    struct DynamicGameModel {
+        long long frame;
+        SpriteList sprites;
+        PlayerList players;
+    };
+    
+    // Interface for ClientCorba - services provided by the client (called by server)
+    interface ClientCorba {
+        // Called by server to notify client of model changes
+        void modelChanged(in DynamicGameModel model);
+    };
+    
+    // Interface for ServerCorba - services provided by the server (called by client)
+    interface ServerCorba {
+        // Connect a player to the game
+        StartGameInfo connect(in string playerName, in ClientCorba client);
+        
+        // Movement methods
+        void moveLeft(in long playerId);
+        void moveRight(in long playerId);
+        void moveUp(in long playerId);
+        void moveDown(in long playerId);
+        
+        // Action methods
+        void releaseBomb(in long playerId);
+    };
+};
