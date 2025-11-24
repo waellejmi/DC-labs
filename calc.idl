@@ -1,0 +1,9 @@
+module eniso {
+    exception DivByZeroException {
+        string message;
+    };
+
+    interface Calc {
+        long div(in long a, in long b) raises (DivByZeroException);
+    };
+};
